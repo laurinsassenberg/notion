@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Projects-Ordner öffnen</title>
+<script>
+  // Sofort unsichtbar, wenn automatisches Schließen eingeschaltet ist (vor dem ersten Zeichnen).
+  try { if (localStorage.getItem("projects-link-autoclose") === "1") document.documentElement.style.visibility = "hidden"; } catch (e) {}
+</script>
 <style>
   :root { color-scheme: light dark; }
   body {
@@ -85,11 +89,10 @@
   again.addEventListener("click", launch);
 
   if (autoclose()) {
-    document.body.style.visibility = "hidden";
     launch();
     setTimeout(function () {
       window.close();
-      document.body.style.visibility = "visible";
+      document.documentElement.style.visibility = "visible";
     }, 400);
   } else {
     hint.hidden = false;
