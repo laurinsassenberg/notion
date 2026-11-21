@@ -85,8 +85,12 @@
   again.addEventListener("click", launch);
 
   if (autoclose()) {
+    document.body.style.visibility = "hidden";
     launch();
-    setTimeout(function () { window.close(); }, 1500);
+    setTimeout(function () {
+      window.close();
+      document.body.style.visibility = "visible";
+    }, 400);
   } else {
     hint.hidden = false;
     auto.hidden = false;
